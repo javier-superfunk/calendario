@@ -1,14 +1,15 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
     <div class="calendar">
+        <div></div>
       <div class="cabecera">
-        <i class="fas fa-angle-left nav"></i>
-        <div>{{ $meses[$mes] }}</div>
+        <i class="fas fa-angle-left nav" wire:click="decrementar('m')"></i>
+        <div>{{ $meses[$countMes] }}</div>
         <i class="fas fa-angle-right nav" wire:click="incrementar('m')"></i>
         
-        <a href="#" class="nav"><i class="fas fa-angle-left"></i></a>
+        <i class="fas fa-angle-left nav" wire:click="decrementar('a')"></i>
         <div><span class="year">{{ $anio }}</span></div>
-        <a href="#" class="nav" wire:click="incrementar('a')"><i class="fas fa-angle-right"></i></a>
+        <i class="fas fa-angle-right nav " wire:click="incrementar('a')"></i>
       </div>
       
       <div class="days">
