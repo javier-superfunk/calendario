@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 
 class Calendario extends Component
 {
-    private $currentDateTime;
+    protected $currentDateTime;
     
     public $inicioCalendario;
     public $finCalendario;

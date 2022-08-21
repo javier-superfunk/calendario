@@ -5,8 +5,6 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
 body {
-    /*background: #fad390;
-    font-family: "Questrial", sans-serif;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,8 +17,6 @@ body {
     align-items: center;
     background: #fff;
     padding: 20px;
-    /*border-radius: 5px;
-  box-shadow: 0px 40px 30px -20px rgba(0, 0, 0, 0.3);*/
     .cabecera {
         display: flex;
         justify-content: space-between;
