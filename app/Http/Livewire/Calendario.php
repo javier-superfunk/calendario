@@ -40,10 +40,16 @@ class Calendario extends Component
         $this->anio = $this->currentDateTime->copy()->format('Y');
     }
 
+    /**
+     * Metodo para incrementar, tanto por mes, como por año
+     */
     public function incrementar($objeto)
     {
+        // Creamos una instacia de la fecha con el mes, y año que está en la vista
         $this->currentDateTime = Carbon::createFromFormat('n/Y', $this->countMes.'/'.$this->anio);
 
+        // Si el parametro es M es porque se incrementa un mes,
+        // por lo que nos valemos del metodo addMonth de Carbon
         if ($objeto == "m") {
             $this->inicioCalendario = $this->currentDateTime->copy()
                                             ->addMonth()
@@ -53,9 +59,13 @@ class Calendario extends Component
                                         ->addMonth()
                                         ->lastOfMonth()
                                         ->endOfWeek(Carbon::SATURDAY);
+            
+            // establecemos los valores para mes y año que figuran en la vista
             $this->countMes = (int) $this->currentDateTime->copy()->addMonth()->format('n');
             $this->anio = (int) $this->currentDateTime->copy()->addMonth()->format('Y');
         } else {
+            // Si el parametro es A es porque se incrementa un año,
+            // por lo que nos valemos del metodo addYear de Carbon
             $this->inicioCalendario = $this->currentDateTime->copy()
                                             ->addYear()
                                             ->firstOfMonth()
@@ -64,11 +74,17 @@ class Calendario extends Component
                                         ->addYear()
                                         ->lastOfMonth()
                                         ->endOfWeek(Carbon::SATURDAY);
-            
+            // establecemos los valores para mes y año que figuran en la vista
             $this->countMes = (int) $this->currentDateTime->copy()->addYear()->format('n');
             $this->anio = (int) $this->currentDateTime->copy()->addYear()->format('Y');
         }
     }
+
+    /**
+     * Metodo para decrementar, tanto por mes, como por año
+     * La lógica es la misma que para el incremento,
+     * pero utilizando los metodos subMonth y subYear de Carbon
+     */
     public function decrementar($objeto)
     {
         $this->currentDateTime = Carbon::createFromFormat('n/Y', $this->countMes.'/'.$this->anio);
@@ -100,6 +116,9 @@ class Calendario extends Component
         }
     }
     
+    /**
+     * Renderizado de la vista
+     */
     public function render()
     {
         return view('livewire.calendario');
